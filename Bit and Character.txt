@@ -1,0 +1,57 @@
+import java.util.*;
+
+class BitStuffing {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the data stream: ");
+        String dataStream = sc.nextLine();
+        String stuffedStream = bitStuffing(dataStream);
+        System.out.println("Original Data Stream: " + dataStream);
+        System.out.println("Stuffed Data Stream: " + stuffedStream);
+        sc.close();
+    }
+
+    public static String bitStuffing(String dataStream) {
+        StringBuilder stuffedStream = new StringBuilder();
+        int consecutiveOnes = 0;
+        for (int i = 0; i < dataStream.length(); i++) {
+            char bit = dataStream.charAt(i);
+            stuffedStream.append(bit);
+            consecutiveOnes = (bit == '1') ? consecutiveOnes + 1 : 0;
+            if (consecutiveOnes == 5) {
+                stuffedStream.append('0');
+                consecutiveOnes = 0;
+            }
+        }
+        return stuffedStream.toString();
+    }
+}
+
+
+
+import java.util.*;
+
+class Char {
+    public static void main(String r[]) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of characters: ");
+        int n = sc.nextInt();
+        String in[] = new String[n];
+        System.out.println("Enter characters: ");
+        for (int i = 0; i < n; i++) {
+            in[i] = sc.next();
+        }
+        for (int i = 0; i < n; i++) {
+            if (in[i].equals("dle")) {
+                in[i] = "dle dle";
+            }
+        }
+        System.out.println("Transmitted message is: ");
+        System.out.print(" dle stx ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(in[i] + " ");
+        }
+        System.out.println(" dle etx ");
+        sc.close();
+    }
+}
