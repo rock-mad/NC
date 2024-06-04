@@ -20,3 +20,5 @@ class TraceServer {
         }
     }
 }
+
+//sudo apt-get install traceroute
